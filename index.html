@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Malestar en la Globalización — Lección Interactiva Sutori</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0B1325;
+      --bg-card: rgba(16, 27, 51, 0.88);
+      --bg-card-hover: rgba(22, 38, 70, 0.95);
+      --gold-primary: #D4AF37;
+      --gold-bright: #F5C542;
+      --gold-dim: rgba(212, 175, 55, 0.25);
+      --cyan-accent: #00E5FF;
+      --cyan-dim: rgba(0, 229, 255, 0.2);
+      --cream-text: #F5F0E6;
+      --cream-muted: #D1C7B7;
+      --border-gold: rgba(212, 175, 55, 0.4);
+      --border-cyan: rgba(0, 229, 255, 0.4);
+      --shadow-gold: 0 0 25px rgba(212, 175, 55, 0.18);
+      --shadow-cyan: 0 0 25px rgba(0, 229, 255, 0.15);
+      --timeline-color: #D4AF37;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(0, 229, 255, 0.04) 0%, transparent 45%),
+        linear-gradient(rgba(11, 19, 37, 0.95), rgba(11, 19, 37, 0.98)),
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(212, 175, 55, 0.02) 40px, rgba(212, 175, 55, 0.02) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(212, 175, 55, 0.02) 40px, rgba(212, 175, 55, 0.02) 41px);
+      color: var(--cream-text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Scroll progress bar */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold-primary), var(--cyan-accent));
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Top Sticky Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(11, 19, 37, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-gold);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .nav-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid var(--border-gold);
+      color: var(--cream-text);
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--gold-primary);
+      color: #0B1325;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* Header Banner */
+    .hero-banner {
+      max-width: 1200px;
+      margin: 2.5rem auto 3rem;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      background: radial-gradient(ellipse at center, rgba(21, 34, 60, 0.85) 0%, rgba(11, 19, 37, 0.95) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: 16px;
+      box-shadow: var(--shadow-gold);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-bright);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: var(--cream-text);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-title span {
+      color: var(--gold-primary);
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 0.4rem;
+    }
+
+    .hero-meta {
+      max-width: 850px;
+      margin: 1.25rem auto 0;
+      color: var(--cream-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .team-credits {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .credit-tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--cream-text);
+    }
+    .credit-tag strong {
+      color: var(--gold-bright);
+    }
+
+    /* Sutori Timeline Container */
+    .timeline-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem 6rem;
+      position: relative;
+    }
+
+    /* Central Vertical Line */
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: linear-gradient(180deg, var(--gold-primary) 0%, rgba(212, 175, 55, 0.3) 50%, var(--cyan-accent) 100%);
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    /* Section Header Markers */
+    .section-marker {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin: 4.5rem 0 3rem;
+    }
+
+    .section-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #0B1325;
+      border: 2px solid var(--gold-primary);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gold-bright);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .section-pill .node-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--gold-primary);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--gold-bright);
+    }
+
+    /* Timeline Cards */
+    .timeline-card {
+      position: relative;
+      z-index: 2;
+      width: calc(50% - 40px);
+      margin-bottom: 3.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-gold);
+      border-color: var(--gold-primary);
+    }
+
+    /* Alternating left and right */
+    .timeline-card.left {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    .timeline-card.right {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    /* Connector node dots */
+    .timeline-card::after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      width: 16px;
+      height: 16px;
+      background: var(--bg-dark);
+      border: 3px solid var(--gold-primary);
+      border-radius: 50%;
+      z-index: 3;
+      box-shadow: 0 0 8px var(--gold-primary);
+    }
+
+    .timeline-card.left::after {
+      right: -49px;
+    }
+
+    .timeline-card.right::after {
+      left: -49px;
+    }
+
+    /* Image Wrapper */
+    .card-media {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      background: #060B14;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .card-media:hover {
+      border-color: var(--gold-bright);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .card-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .card-media:hover img {
+      transform: scale(1.02);
+    }
+
+    .zoom-hint {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(11, 19, 37, 0.85);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-bright);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      pointer-events: none;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Card Content */
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+
+    .card-summary {
+      color: var(--cream-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-points {
+      list-style: none;
+      margin-top: 0.75rem;
+    }
+
+    .card-points li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.65rem;
+      font-size: 0.92rem;
+      color: var(--cream-text);
+    }
+
+    .card-points li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      color: var(--gold-primary);
+      font-size: 0.75rem;
+      top: 2px;
+    }
+
+    .card-points li strong {
+      color: var(--gold-bright);
+    }
+
+    /* Full Width Quiz Card at the end of each section */
+    .quiz-card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 900px;
+      margin: 3rem auto 4rem;
+      background: radial-gradient(ellipse at top, rgba(22, 38, 70, 0.95) 0%, rgba(11, 19, 37, 0.98) 100%);
+      border: 2px solid var(--border-cyan);
+      box-shadow: var(--shadow-cyan);
+      border-radius: 16px;
+      padding: 2.25rem;
+      text-align: left;
+    }
+
+    .quiz-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .quiz-badge {
+      background: rgba(0, 229, 255, 0.15);
+      border: 1px solid var(--cyan-accent);
+      color: var(--cyan-accent);
+      padding: 0.3rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .quiz-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      color: var(--cream-text);
+      font-weight: 700;
+    }
+
+    .quiz-question {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--cream-text);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .quiz-option {
+      background: rgba(11, 19, 37, 0.75);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--cream-text);
+      padding: 0.95rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .quiz-option:hover {
+      background: rgba(212, 175, 55, 0.12);
+      border-color: var(--gold-primary);
+      transform: translateX(4px);
+    }
+
+    .option-letter {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold-bright);
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .quiz-option.correct {
+      background: rgba(16, 185, 129, 0.2) !important;
+      border-color: #10B981 !important;
+      color: #D1FAE5 !important;
+    }
+
+    .quiz-option.incorrect {
+      background: rgba(239, 68, 68, 0.2) !important;
+      border-color: #EF4444 !important;
+      color: #FEE2E2 !important;
+    }
+
+    .quiz-feedback {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      animation: fadeIn 0.35s ease-in-out;
+    }
+
+    .quiz-feedback.success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10B981;
+      color: #D1FAE5;
+    }
+
+    .quiz-feedback.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #EF4444;
+      color: #FEE2E2;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(6, 11, 20, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .lightbox-content {
+      max-width: 95%;
+      max-height: 90vh;
+      border: 2px solid var(--gold-primary);
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.35);
+      position: relative;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: var(--gold-primary);
+      color: #0B1325;
+      font-size: 1.5rem;
+      font-weight: 700;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 2px solid #0B1325;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Footer */
+    .lesson-footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      border-top: 1px solid var(--border-gold);
+      background: rgba(11, 19, 37, 0.95);
+      color: var(--cream-muted);
+      font-size: 0.9rem;
+    }
+
+    .lesson-footer strong {
+      color: var(--gold-bright);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .timeline-container::before {
+        left: 20px;
+      }
+      .timeline-card {
+        width: calc(100% - 50px);
+        margin-left: 50px !important;
+        margin-right: 0 !important;
+      }
+      .timeline-card::after {
+        left: -39px !important;
+        right: auto !important;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-title span {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- Navigation -->
+  <nav class="top-nav">
+    <div class="nav-brand">
+      <span>🏛️</span> CÁTEDRA GLOBAL
+    </div>
+    <div class="nav-links">
+      <a href="#bloque-1" class="nav-btn">Parte 1: Fundamentos</a>
+      <a href="#bloque-2" class="nav-btn">Parte 2: Dogma y Poder</a>
+      <a href="#bloque-3" class="nav-btn">Parte 3: Crisis y Transición</a>
+      <a href="#bloque-4" class="nav-btn">Parte 4: Reforma y Futuro</a>
+      <a href="Guia_Exposicion_Sutori_Stiglitz.pdf" class="nav-btn" style="border-color: #00E5FF; color: #00E5FF;" download>📥 Descargar Guía PDF</a>
+    </div>
+  </nav>
+
+  <!-- Hero Header Banner -->
+  <header class="hero-banner">
+    <span class="hero-badge">Lección Interactiva • Formato Sutori</span>
+    <h1 class="hero-title">
+      El Malestar en la Globalización
+      <span>Joseph E. Stiglitz — Análisis Crítico y Propuestas de Reforma</span>
+    </h1>
+    <p class="hero-meta">
+      Un recorrido analítico y empírico sobre cómo las recetas neoliberales del FMI y el Consenso de Washington
+      profundizaron las crisis en los países en desarrollo, y la urgente reconstrucción de una economía global con rostro humano.
+    </p>
+
+    <div class="team-credits">
+      <div class="credit-tag"><strong>Docente:</strong> Lorena Patricia Bermúdez Castañeda</div>
+      <div class="credit-tag"><strong>D. Díaz</strong> (Ing. Sistemas)</div>
+      <div class="credit-tag"><strong>J. Artunduaga</strong> (Psicología)</div>
+      <div class="credit-tag"><strong>K. Bracho</strong> (Negocios Internacionales)</div>
+      <div class="credit-tag"><strong>O. Gonzales</strong> (Ing. Civil)</div>
+    </div>
+  </header>
+
+  <!-- Timeline Body -->
+  <main class="timeline-container">
+
+    <!-- ==================== BLOQUE 1 ==================== -->
+    <div class="section-marker" id="bloque-1">
+      <div class="section-pill">
+        <span class="node-dot"></span>
+        Parte 1: Fundamentos, Tesis Central y el Espejismo Neoliberal
+      </div>
+    </div>
+
+    <!-- Card 1 -->
+    <article class="timeline-card left">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion1_autor_y_contexto.png')">
+        <img src="imagenes_sutori/seccion1_autor_y_contexto.png" alt="Autor, Enfoque y Contexto Histórico" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">El Malestar en la Globalización: Autor y Contexto</h2>
+      <p class="card-summary">
+        La perspectiva crítica de Joseph E. Stiglitz no proviene del activismo externo, sino del mismísimo corazón del poder económico global.
+      </p>
+      <ul class="card-points">
+        <li><strong>Legitimidad Científica:</strong> Premio Nobel de Economía (2001) y pionero en la teoría de asimetrías de información.</li>
+        <li><strong>Experiencia de Primera Mano:</strong> Ex Vicepresidente y Economista Jefe del Banco Mundial; ex Presidente del Consejo de Asesores Económicos de EE.UU.</li>
+        <li><strong>El Testigo Incómodo:</strong> Escribió la obra tras presenciar cómo el FMI imponía políticas destructivas a puertas cerradas durante las crisis financieras de los 90.</li>
+      </ul>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="timeline-card right">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion1_tesis_central.png')">
+        <img src="imagenes_sutori/seccion1_tesis_central.png" alt="Tesis Central del Autor" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">Tesis Central: El Potencial Traicionado</h2>
+      <p class="card-summary">
+        La globalización tiene un verdadero potencial de enriquecer a la humanidad, pero ha sido administrada como un mecanismo asimétrico.
+      </p>
+      <ul class="card-points">
+        <li><strong>Potencial de Progreso:</strong> El comercio y la transferencia tecnológica pueden erradicar la pobreza si se gestionan con equidad.</li>
+        <li><strong>Captura Corporativa:</strong> La gestión del FMI, Banco Mundial y OMC priorizó los intereses de las finanzas occidentales sobre el bienestar social.</li>
+        <li><strong>Desvío del Mandato:</strong> Se abandonó la meta keynesiana de estabilidad y pleno empleo para imponer el fundamentalismo de libre mercado.</li>
+      </ul>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="timeline-card left">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion1_impacto_en_datos.png')">
+        <img src="imagenes_sutori/seccion1_impacto_en_datos.png" alt="El Impacto en Datos" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">El Abismo de la Desigualdad: Datos del Malestar</h2>
+      <p class="card-summary">
+        Las cifras empíricas desmienten la promesa del "derrame económico" hacia las poblaciones más vulnerables.
+      </p>
+      <ul class="card-points">
+        <li><strong>Hiperconcentración:</strong> El 1% más rico de la población mundial capta más del <strong>20% de los ingresos globales</strong>.</li>
+        <li><strong>Brecha Latinoamericana:</strong> Según la CEPAL, el 10% más rico gana <strong>22 veces más</strong> que el 20% más vulnerable.</li>
+        <li><strong>Comercio Desigual:</strong> Aunque el comercio mundial creció 30 veces entre 1950 y 2020 (OMC), las ganancias quedaron en pocas transnacionales.</li>
+      </ul>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="timeline-card right">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion1_consenso_de_washington.png')">
+        <img src="imagenes_sutori/seccion1_consenso_de_washington.png" alt="Promesas Rotas del Consenso de Washington" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">Las Promesas Rotas del Consenso de Washington</h2>
+      <p class="card-summary">
+        La receta dogmática prometió estabilidad y prosperidad, pero desmanteló los equilibrios sociales en el Sur Global.
+      </p>
+      <ul class="card-points">
+        <li><strong>La Trinidad Rígida:</strong> Austeridad fiscal draconiana, privatización acelerada y liberalización comercial total.</li>
+        <li><strong>Condicionalidad Obligatoria:</strong> El acceso a préstamos vitales quedó atado a recortes de gasto público en plena recesión.</li>
+        <li><strong>Realidad Social:</strong> Enriqueció a élites e inversores externos al tiempo que destruía a las clases medias locales.</li>
+      </ul>
+    </article>
+
+    <!-- Quiz 1 -->
+    <div class="quiz-card" id="quiz-1">
+      <div class="quiz-header">
+        <span class="quiz-badge">Comprobación Interactiva</span>
+        <h3 class="quiz-title">Quiz de la Parte 1</h3>
+      </div>
+      <p class="quiz-question">
+        Según Joseph E. Stiglitz y los datos empíricos de organismos internacionales, ¿cuál ha sido uno de los efectos más contradictorios de la globalización bajo el Consenso de Washington?
+      </p>
+      <div class="quiz-options">
+        <div class="quiz-option" onclick="answerQuiz(1, this, false)">
+          <span class="option-letter">A</span>
+          <span>La reducción homogénea de las brechas de riqueza en todos los continentes gracias a la desregulación total.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(1, this, true)">
+          <span class="option-letter">B</span>
+          <span>El crecimiento récord del comercio internacional contrastado con una concentración extrema donde el 1% más rico capta más del 20% de los ingresos mundiales.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(1, this, false)">
+          <span class="option-letter">C</span>
+          <span>La eliminación de monopolios privados y la rápida expansión de las reservas fiscales en América Latina.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(1, this, false)">
+          <span class="option-letter">D</span>
+          <span>El fin de los ciclos recesivos en economías emergentes debido a la austeridad fiscal obligatoria.</span>
+        </div>
+      </div>
+      <div class="quiz-feedback" id="feedback-1"></div>
+    </div>
+
+
+    <!-- ==================== BLOQUE 2 ==================== -->
+    <div class="section-marker" id="bloque-2">
+      <div class="section-pill">
+        <span class="node-dot"></span>
+        Parte 2: Dogmatismo Institucional, Soberanía y Asimetrías
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <article class="timeline-card left">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion2_fracaso_talla_unica.png')">
+        <img src="imagenes_sutori/seccion2_fracaso_talla_unica.png" alt="El Fracaso de la Talla Única" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">El Fracaso Sistémico de la "Talla Única"</h2>
+      <p class="card-summary">
+        El FMI aplicó la misma fórmula económica preconcebida sin considerar la madurez institucional ni la estructura social de cada país.
+      </p>
+      <ul class="card-points">
+        <li><strong>Fantasía de Modelos Perfectos:</strong> El dogma asume que los mercados operan con información y competencia perfecta universal.</li>
+        <li><strong>Realidad Incompleta:</strong> En los países en desarrollo predominan fallas de mercado, monopolios y asimetrías de información.</li>
+        <li><strong>La Lección:</strong> El desarrollo exige soberanía económica y estrategias adaptadas al ritmo de cada nación.</li>
+      </ul>
+    </article>
+
+    <!-- Card 6 -->
+    <article class="timeline-card right">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion2_caso_etiopia.png')">
+        <img src="imagenes_sutori/seccion2_caso_etiopia.png" alt="Caso Etiopía y la Política del Poder" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">Caso Etiopía: Desarrollo Práctico vs. Dogma</h2>
+      <p class="card-summary">
+        El conflicto entre Meles Zenawi y el FMI ilustra el choque frontal entre el desarrollo real y la imposición burocrática.
+      </p>
+      <ul class="card-points">
+        <li><strong>Estrategia Sensata:</strong> Etiopía priorizó el desarrollo rural, fertilizantes e infraestructura agrícola con finanzas ordenadas.</li>
+        <li><strong>El Choque Ideológico:</strong> El FMI congeló fondos exigiendo abrir prematuramente el sector bancario y mantener reservas ociosas.</li>
+        <li><strong>Veredicto de Stiglitz:</strong> El FMI castigó políticas eficaces sobre el terreno solo para imponer su dogma de poder financiero.</li>
+      </ul>
+    </article>
+
+    <!-- Card 7 -->
+    <article class="timeline-card left">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion2_hipocresia_comercial.png')">
+        <img src="imagenes_sutori/seccion2_hipocresia_comercial.png" alt="Hipocresía del Comercio Global" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">La Hipocresía del Comercio y el Doble Rasero</h2>
+      <p class="card-summary">
+        Las potencias occidentales obligaron a los pobres a desmantelar aranceles mientras blindaban sus propios mercados con subsidios.
+      </p>
+      <ul class="card-points">
+        <li><strong>Apertura Forzada:</strong> Las naciones vulnerables fueron forzadas a abrir sus mercados sin proteger industrias nacientes.</li>
+        <li><strong>Proteccionismo del Norte:</strong> EE.UU. y Europa mantuvieron subsidios agrícolas masivos para bloquear exportaciones del Sur.</li>
+        <li><strong>Decisiones Antidemocráticas:</strong> Las políticas del FMI y OMC fueron dictadas por una mezcla de ideología y mala economía.</li>
+      </ul>
+    </article>
+
+    <!-- Card 8 -->
+    <article class="timeline-card right">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion2_caso_argentina.jpg')">
+        <img src="imagenes_sutori/seccion2_caso_argentina.jpg" alt="Caso Argentina: Austeridad en Plena Recesión" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">Caso Argentina: Austeridad en Plena Recesión</h2>
+      <p class="card-summary">
+        El "alumno modelo" del FMI colapsó tras aplicar fielmente privatizaciones y recortes fiscales obligatorios.
+      </p>
+      <ul class="card-points">
+        <li><strong>El Modelo Impuesto:</strong> Anclaje peso-dólar y privatización masiva aclamados durante una década por el FMI.</li>
+        <li><strong>La Trampa Fiscal:</strong> En plena recesión, el FMI condicionó créditos a recortar el presupuesto público en $3.000 millones.</li>
+        <li><strong>El Estallido de 2001:</strong> La asfixia fiscal causó más del <strong>25% de desempleo</strong> y empujó a más del <strong>50% a la pobreza</strong>.</li>
+      </ul>
+    </article>
+
+    <!-- Quiz 2 -->
+    <div class="quiz-card" id="quiz-2">
+      <div class="quiz-header">
+        <span class="quiz-badge">Comprobación Interactiva</span>
+        <h3 class="quiz-title">Quiz de la Parte 2</h3>
+      </div>
+      <p class="quiz-question">
+        ¿Por qué Stiglitz califica como un "fracaso dogmático" la receta de talla única aplicada por el FMI en casos como Etiopía y Argentina?
+      </p>
+      <div class="quiz-options">
+        <div class="quiz-option" onclick="answerQuiz(2, this, false)">
+          <span class="option-letter">A</span>
+          <span>Porque los gobiernos locales carecían de recursos naturales para pagar sus deudas en divisas fuertes.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(2, this, true)">
+          <span class="option-letter">B</span>
+          <span>Porque ignoró que las economías en desarrollo tienen mercados imperfectos, castigando a naciones con políticas sensatas (Etiopía) y asfixiando con austeridad en recesión (Argentina).</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(2, this, false)">
+          <span class="option-letter">C</span>
+          <span>Porque el FMI promovió un proteccionismo agrario excesivo en el Sur Global en contra de los acuerdos comerciales.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(2, this, false)">
+          <span class="option-letter">D</span>
+          <span>Porque ambos países decidieron aislarse voluntariamente del comercio internacional y la inversión extranjera.</span>
+        </div>
+      </div>
+      <div class="quiz-feedback" id="feedback-2"></div>
+    </div>
+
+
+    <!-- ==================== BLOQUE 3 ==================== -->
+    <div class="section-marker" id="bloque-3">
+      <div class="section-pill">
+        <span class="node-dot"></span>
+        Parte 3: Anatomía de las Crisis Financieras y la Gran Transición
+      </div>
+    </div>
+
+    <!-- Card 9 -->
+    <article class="timeline-card left">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion3_crisis_asiatica.png')">
+        <img src="imagenes_sutori/seccion3_crisis_asiatica.png" alt="La Crisis Asiática de 1997" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">La Crisis Asiática: El Dinero Caliente</h2>
+      <p class="card-summary">
+        Cómo la presión ideológica para abrir la cuenta de capitales precipitó a los "Tigres Asiáticos" al borde del abismo.
+      </p>
+      <ul class="card-points">
+        <li><strong>Apertura Prematura:</strong> El FMI forzó la liberalización irrestricta de capitales en economías prósperas del Este Asiático.</li>
+        <li><strong>Dinero Caliente:</strong> Ingresó capital especulativo volátil a corto plazo que infló burbujas bursátiles e inmobiliarias.</li>
+        <li><strong>Pánico y Fuga:</strong> Ante el primer susto cambiario, los capitales huyeron masivamente, desplomando las monedas locales.</li>
+      </ul>
+    </article>
+
+    <!-- Card 10 -->
+    <article class="timeline-card right">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion3_receta_hooverita.jpg')">
+        <img src="imagenes_sutori/seccion3_receta_hooverita.jpg" alt="La Receta Hooverita del FMI" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">La Receta Hooverita: Contracción y Asfixia</h2>
+      <p class="card-summary">
+        En lugar de inyectar liquidez keynesiana para estabilizar la demanda, el FMI aplicó la medicina equivocada de 1929.
+      </p>
+      <ul class="card-points">
+        <li><strong>Tasas Punitivas:</strong> El FMI exigió subir las tasas de interés al <strong>50%-80%</strong> y recortar el gasto público.</li>
+        <li><strong>Quiebra Corporativa:</strong> La contracción asfixió a empresas saludables con deudas operativas, destruyendo el empleo.</li>
+        <li><strong>Depresión Inducida:</strong> Una crisis de liquidez temporal fue convertida por el FMI en una profunda depresión económica.</li>
+      </ul>
+    </article>
+
+    <!-- Card 11 -->
+    <article class="timeline-card left">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion3_matriz_rusia_china.png')">
+        <img src="imagenes_sutori/seccion3_matriz_rusia_china.png" alt="Transición del Comunismo al Mercado: Rusia vs China" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">Matriz Empírica: Rusia vs. China</h2>
+      <p class="card-summary">
+        El gran experimento natural de la historia económica mundial enfrentó la Terapia de Choque contra el Gradualismo pragmático.
+      </p>
+      <ul class="card-points">
+        <li><strong>Rusia (Terapia de Choque):</strong> Privatización exprés sin leyes ni regulación. Resultado: caída del 40% del PIB, hiperinflación y cleptocracia de oligarcas.</li>
+        <li><strong>China (Gradualismo):</strong> "Cruzar el río sintiendo las piedras". Creó instituciones previas y creció más del <strong>10% anual</strong>.</li>
+        <li><strong>Impacto Social:</strong> China logró la mayor reducción de pobreza de la historia (500M de personas) ignorando al FMI.</li>
+      </ul>
+    </article>
+
+    <!-- Card 12 -->
+    <article class="timeline-card right">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion3_secuencia_institucional.jpg')">
+        <img src="imagenes_sutori/seccion3_secuencia_institucional.jpg" alt="La Secuencia Institucional Indispensable" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">Secuencia: Las Reglas Antes del Mercado</h2>
+      <p class="card-summary">
+        Los mercados libres no surgen por arte de magia al retirar al Estado; requieren cimientos jurídicos y redes sociales.
+      </p>
+      <ul class="card-points">
+        <li><strong>Falacia de la Espontaneidad:</strong> Desmantelar al Estado sin leyes no genera competencia, engendra monopolios mafiosos.</li>
+        <li><strong>La Secuencia Correcta:</strong> 1. Leyes antimonopolio y de competencia 2. Tribunales comerciales 3. Redes de seguridad social.</li>
+        <li><strong>Axioma de Stiglitz:</strong> Si se privatiza antes de fijar las reglas, los monopolios públicos se convierten en oligopolios privados impunes.</li>
+      </ul>
+    </article>
+
+    <!-- Quiz 3 -->
+    <div class="quiz-card" id="quiz-3">
+      <div class="quiz-header">
+        <span class="quiz-badge">Comprobación Interactiva</span>
+        <h3 class="quiz-title">Quiz de la Parte 3</h3>
+      </div>
+      <p class="quiz-question">
+        Al comparar la transición económica hacia el mercado de Rusia y China, ¿cuál fue la lección determinante identificada por Joseph Stiglitz?
+      </p>
+      <div class="quiz-options">
+        <div class="quiz-option" onclick="answerQuiz(3, this, false)">
+          <span class="option-letter">A</span>
+          <span>La velocidad es el factor clave: desmantelar el Estado de la noche a la mañana garantiza competencia perfecta.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(3, this, false)">
+          <span class="option-letter">B</span>
+          <span>Rusia triunfó al privatizar de golpe sin regulaciones, mientras que China sufrió por rechazar al FMI.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(3, this, true)">
+          <span class="option-letter">C</span>
+          <span>La secuencia institucional es decisiva: privatizar sin leyes genera cleptocracia (Rusia), mientras que crear instituciones y redes previas (China) produjo una reducción histórica de la pobreza.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(3, this, false)">
+          <span class="option-letter">D</span>
+          <span>Ambos modelos arrojaron resultados idénticos porque los mercados se autorregulan sin importar las leyes previas.</span>
+        </div>
+      </div>
+      <div class="quiz-feedback" id="feedback-3"></div>
+    </div>
+
+
+    <!-- ==================== BLOQUE 4 ==================== -->
+    <div class="section-marker" id="bloque-4">
+      <div class="section-pill">
+        <span class="node-dot"></span>
+        Parte 4: Reconstrucción del Sistema y el Nuevo Paradigma
+      </div>
+    </div>
+
+    <!-- Card 13 -->
+    <article class="timeline-card left">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion4_gobernanza_global.jpg')">
+        <img src="imagenes_sutori/seccion4_gobernanza_global.jpg" alt="Democratización de la Gobernanza Financiera Global" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">Democratización de la Gobernanza Global</h2>
+      <p class="card-summary">
+        El orden financiero internacional debe desmantelar el monopolio de las potencias del G-7 y dar voz real al Sur Global.
+      </p>
+      <ul class="card-points">
+        <li><strong>Asimetría Actual:</strong> EE.UU. retiene derecho de veto de facto y Europa nombra por tradición al director del FMI.</li>
+        <li><strong>Voz al 80% del Mundo:</strong> Los países en desarrollo, donde vive la mayoría afectada por estas políticas, carecen de representación real.</li>
+        <li><strong>Reforma Estructural:</strong> Reasignación democrática de cuotas y derechos de voto en los directorios del FMI y Banco Mundial.</li>
+      </ul>
+    </article>
+
+    <!-- Card 14 -->
+    <article class="timeline-card right">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion4_soberania_economica.jpg')">
+        <img src="imagenes_sutori/seccion4_soberania_economica.jpg" alt="Soberanía Económica y Respeto a los Ritmos Nacionales" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">Soberanía Económica y Ritmos Propios</h2>
+      <p class="card-summary">
+        Las instituciones internacionales deben respetar que cada nación dicte su propia estrategia y velocidad de desarrollo.
+      </p>
+      <ul class="card-points">
+        <li><strong>Fin de Condicionalidades Abusivas:</strong> Los préstamos de rescate no deben forzar reformas laborales regresivas ni recortes sociales.</li>
+        <li><strong>Secuenciación Soberana:</strong> Cada nación debe regular su apertura comercial según el grado de madurez de sus sectores productivos.</li>
+        <li><strong>Seguridad Social Primero:</strong> Blindar la salud, la educación y los subsidios de desempleo antes de exponerse al riesgo financiero exterior.</li>
+      </ul>
+    </article>
+
+    <!-- Card 15 -->
+    <article class="timeline-card left">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion4_propuestas_de_reforma.png')">
+        <img src="imagenes_sutori/seccion4_propuestas_de_reforma.png" alt="Propuestas de Reforma Estructural" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">Transparencia Radical y Alivio de Deuda</h2>
+      <p class="card-summary">
+        Cuatro pilares de reconstrucción institucional para transformar una arquitectura financiera quebrada y opaca.
+      </p>
+      <ul class="card-points">
+        <li><strong>Transparencia Radical:</strong> Eliminar el secretismo en la toma de decisiones; los ciudadanos deben conocer qué exigen las entidades globales.</li>
+        <li><strong>Alivio Real de Deuda:</strong> Condonación de deudas insostenibles para que los fondos no se desvíen únicamente a salvar a bancos acreedores.</li>
+        <li><strong>Tribunal de Bancarrota Soberana:</strong> Establecer un marco de quiebra internacional que proteja el gasto social básico de los países asfixiados.</li>
+      </ul>
+    </article>
+
+    <!-- Card 16 -->
+    <article class="timeline-card right">
+      <div class="card-media" onclick="openLightbox('imagenes_sutori/seccion4_conclusion_nuevo_paradigma.png')">
+        <img src="imagenes_sutori/seccion4_conclusion_nuevo_paradigma.png" alt="Conclusión: Un Nuevo Paradigma" loading="lazy">
+        <span class="zoom-hint">🔍 Clic para ampliar</span>
+      </div>
+      <h2 class="card-title">Conclusión: Hacia un Nuevo Paradigma</h2>
+      <p class="card-summary">
+        La globalización no es intrínsecamente mala; el malestar nace de su gestión antidemocrática y asimétrica.
+      </p>
+      <ul class="card-points">
+        <li><strong>Fin del Fundamentalismo:</strong> El modelo neoliberal aplicado a ciegas es incompleto e injusto al anteponer finanzas a la estabilidad humana.</li>
+        <li><strong>Rendición de Cuentas:</strong> Rediseñar las finanzas globales para que respondan ante la sociedad civil con flexibilidad y decencia.</li>
+        <li><strong>Globalización con Rostro Humano:</strong> Construir un sistema donde el comercio y la tecnología operen al servicio de la dignidad y la equidad compartida.</li>
+      </ul>
+    </article>
+
+    <!-- Quiz 4 -->
+    <div class="quiz-card" id="quiz-4">
+      <div class="quiz-header">
+        <span class="quiz-badge">Comprobación Interactiva</span>
+        <h3 class="quiz-title">Quiz de la Parte 4</h3>
+      </div>
+      <p class="quiz-question">
+        Entre las propuestas de reforma estructural que plantea Stiglitz para una globalización con rostro humano, ¿cuál de las siguientes medidas es fundamental para democratizar el sistema financiero internacional?
+      </p>
+      <div class="quiz-options">
+        <div class="quiz-option" onclick="answerQuiz(4, this, false)">
+          <span class="option-letter">A</span>
+          <span>Concentrar las decisiones exclusivamente en los ministerios de finanzas del G-7 para acelerar rescates.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(4, this, true)">
+          <span class="option-letter">B</span>
+          <span>Eliminar el derecho de veto unilateral de EE.UU., reasignar cuotas a los países en desarrollo y establecer un marco justo de alivio y bancarrota soberana.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(4, this, false)">
+          <span class="option-letter">C</span>
+          <span>Aumentar el secretismo en las negociaciones para evitar que los parlamentos locales interfieran en los ajustes macroeconómicos.</span>
+        </div>
+        <div class="quiz-option" onclick="answerQuiz(4, this, false)">
+          <span class="option-letter">D</span>
+          <span>Prohibir que los países en desarrollo creen redes de seguridad social antes de abrir sus mercados financieros.</span>
+        </div>
+      </div>
+      <div class="quiz-feedback" id="feedback-4"></div>
+    </div>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+      <img id="lightbox-img" src="" alt="Ampliación infográfica">
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="lesson-footer">
+    <p><strong>Cátedra Global — Universidad del Magdalena (2026)</strong></p>
+    <p>Lección interactiva basada en <em>El Malestar en la Globalización</em> de Joseph E. Stiglitz.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">Diseño de experiencia para Sutori • Paleta Azul Marino, Dorado y Crema • 16 Imágenes Infográficas Autónomas</p>
+  </footer>
+
+  <!-- Script for Interactivity -->
+  <script>
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progress-bar').style.width = scrolled + '%';
+    });
+
+    // Lightbox modal logic
+    function openLightbox(src) {
+      const modal = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      modal.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Quiz logic with instant feedback
+    const quizExplanations = {
+      1: "¡Correcto! Mientras la OMC constató una multiplicación por más de 30 del comercio global, Stiglitz y la CEPAL evidencian que los beneficios quedaron hiperconcentrados en las élites corporativas y el 1% más rico, profundizando la brecha social y salarial.",
+      2: "¡Correcto! La receta de talla única asume modelos teóricos de información y competencia perfecta que no existen en el mundo real. En Etiopía el FMI castigó un plan rural exitoso por razones ideológicas, y en Argentina forzó un recorte de gasto en plena recesión que detonó un 25% de desempleo.",
+      3: "¡Exacto! Stiglitz demuestra que los mercados requieren cimientos institucionales sólidos. La 'Terapia de Choque' en Rusia destruyó el 40% de su PIB y creó una cleptocracia mafiosa, mientras el gradualismo pragmático chino sacó a más de 500 millones de personas de la miseria.",
+      4: "¡Correcto! Stiglitz propone sustituir el monopolio tecnocrático del G-7 por una gobernanza transparente y multilateral donde las naciones del Sur Global tengan voz y voto vinculante, acompañada de un tribunal de bancarrota soberana que proteja las vidas y servicios esenciales de las poblaciones."
+    };
+
+    function answerQuiz(quizNum, optionElement, isCorrect) {
+      const quizCard = document.getElementById('quiz-' + quizNum);
+      const options = quizCard.querySelectorAll('.quiz-option');
+      const feedback = document.getElementById('feedback-' + quizNum);
+
+      options.forEach(opt => {
+        opt.style.pointerEvents = 'none';
+        opt.classList.remove('correct', 'incorrect');
+      });
+
+      if (isCorrect) {
+        optionElement.classList.add('correct');
+        feedback.className = 'quiz-feedback success';
+        feedback.innerHTML = '<strong>✓ ¡Respuesta Correcta!</strong><br>' + quizExplanations[quizNum];
+      } else {
+        optionElement.classList.add('incorrect');
+        feedback.className = 'quiz-feedback error';
+        feedback.innerHTML = '<strong>✗ Respuesta Incorrecta.</strong><br>' + quizExplanations[quizNum];
+      }
+      feedback.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
