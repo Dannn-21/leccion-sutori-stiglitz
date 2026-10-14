@@ -736,6 +736,7 @@
       <a href="#bloque-3" class="nav-btn">Parte 3: Crisis y Transición</a>
       <a href="#bloque-4" class="nav-btn">Parte 4: Reforma y Futuro</a>
       <a href="Guia_Exposicion_Sutori_Stiglitz.pdf" class="nav-btn" style="border-color: #00E5FF; color: #00E5FF;" download>📥 Descargar Guía PDF</a>
+      <a href="#dinamica-mitos-cierre" class="nav-btn" style="border-color: var(--cyan-accent); color: var(--cyan-accent);">⚡ Mitos vs Realidad</a>
     </div>
   </nav>
 
@@ -839,89 +840,6 @@
       </ul>
     </article>
 
-    <!-- Dinámica Interactiva: Mito vs. Realidad (Parte 1) -->
-    <div class="quiz-card" id="dinamica-mitos-1">
-      <div class="quiz-header">
-        <span class="quiz-badge" style="background: rgba(212, 175, 55, 0.2); border-color: var(--gold-primary); color: var(--gold-bright);">⚡ Dinámica Interactiva • Salón Participativo</span>
-        <h3 class="quiz-title">Mito vs. Realidad: Desmontando el Dogma Neoliberal</h3>
-      </div>
-      <p class="quiz-question" style="margin-bottom: 0.75rem;">
-        ¡Hora de participar! A la cuenta de tres, voten con sus manos: <strong>👍 Pulgar arriba si creen que es Realidad</strong>, o <strong>👎 Pulgar abajo si creen que es Mito</strong>. Luego descubriremos el veredicto de Stiglitz:
-      </p>
-
-      <div class="mito-container">
-        <!-- Mito 1 -->
-        <div class="mito-item" id="mito-item-1">
-          <div class="mito-top">
-            <span class="mito-tag">Premisa 1 de 3</span>
-            <span style="font-size: 0.85rem; color: var(--cyan-accent); font-weight: 600;">Eje: Comercio y Desigualdad</span>
-          </div>
-          <div class="mito-statement">
-            «El libre mercado y la apertura comercial desregulada generan un "derrame económico" que reduce la pobreza y beneficia a toda la población automáticamente.»
-          </div>
-          <div class="mito-actions">
-            <button class="btn-vote vote-realidad" onclick="revealMito(1, 'realidad')">👍 Realidad</button>
-            <button class="btn-vote vote-mito" onclick="revealMito(1, 'mito')">👎 Mito</button>
-            <button class="btn-vote" style="border-color: var(--cyan-accent); color: var(--cyan-accent);" onclick="revealMito(1, 'mito')">🔍 Revelar Veredicto</button>
-          </div>
-          <div class="mito-revelation" id="mito-rev-1">
-            <div id="mito-user-feedback-1" style="margin-bottom: 0.5rem; font-size: 0.95rem;"></div>
-            <span class="verdict-badge verdict-mito">🚨 VEREDICTO: ¡ES UN MITO! (La falacia del derrame)</span>
-            <p class="mito-explanation">
-              <strong>Evidencia empírica de Stiglitz, la CEPAL y la OMC:</strong> Aunque el comercio mundial creció <strong>más de 30 veces</strong>, las ganancias se hiperconcentraron. El <strong>1% más rico capta más del 20% de los ingresos mundiales</strong>, y en América Latina el 10% más rico gana <strong>22 veces más</strong> que el 20% más vulnerable. La copa creció en la cima, pero jamás goteó hacia la base trabajadora.
-            </p>
-          </div>
-        </div>
-
-        <!-- Mito 2 -->
-        <div class="mito-item" id="mito-item-2">
-          <div class="mito-top">
-            <span class="mito-tag">Premisa 2 de 3</span>
-            <span style="font-size: 0.85rem; color: var(--cyan-accent); font-weight: 600;">Eje: Las Instituciones Globales</span>
-          </div>
-          <div class="mito-statement">
-            «El FMI y el Banco Mundial son organismos puramente técnicos y neutrales, dedicados a salvar a las economías sin agendas políticas ni intereses corporativos.»
-          </div>
-          <div class="mito-actions">
-            <button class="btn-vote vote-realidad" onclick="revealMito(2, 'realidad')">👍 Realidad</button>
-            <button class="btn-vote vote-mito" onclick="revealMito(2, 'mito')">👎 Mito</button>
-            <button class="btn-vote" style="border-color: var(--cyan-accent); color: var(--cyan-accent);" onclick="revealMito(2, 'mito')">🔍 Revelar Veredicto</button>
-          </div>
-          <div class="mito-revelation" id="mito-rev-2">
-            <div id="mito-user-feedback-2" style="margin-bottom: 0.5rem; font-size: 0.95rem;"></div>
-            <span class="verdict-badge verdict-mito">🚨 VEREDICTO: ¡ES UN MITO! (Captura corporativa)</span>
-            <p class="mito-explanation">
-              <strong>Testimonio directo de Joseph Stiglitz (Ex Economista Jefe del Banco Mundial):</strong> Las decisiones se toman a puerta cerrada bajo un <strong>fundamentalismo ideológico de mercado</strong>. En lugar de actuar como árbitros neutrales, las políticas del FMI y el Tesoro estadounidense priorizaron rescatar a los grandes acreedores y bancos de Wall Street, transfiriendo el costo de las pérdidas a los hombros de las poblaciones empobrecidas.
-            </p>
-          </div>
-        </div>
-
-        <!-- Mito 3 -->
-        <div class="mito-item" id="mito-item-3">
-          <div class="mito-top">
-            <span class="mito-tag">Premisa 3 de 3</span>
-            <span style="font-size: 0.85rem; color: var(--cyan-accent); font-weight: 600;">Eje: El Consenso de Washington</span>
-          </div>
-          <div class="mito-statement">
-            «Cuando una nación entra en recesión, la fórmula más responsable y efectiva es la austeridad inmediata: recortar de inmediato el presupuesto en salud, educación y subsidios.»
-          </div>
-          <div class="mito-actions">
-            <button class="btn-vote vote-realidad" onclick="revealMito(3, 'realidad')">👍 Realidad</button>
-            <button class="btn-vote vote-mito" onclick="revealMito(3, 'mito')">👎 Mito</button>
-            <button class="btn-vote" style="border-color: var(--cyan-accent); color: var(--cyan-accent);" onclick="revealMito(3, 'mito')">🔍 Revelar Veredicto</button>
-          </div>
-          <div class="mito-revelation" id="mito-rev-3">
-            <div id="mito-user-feedback-3" style="margin-bottom: 0.5rem; font-size: 0.95rem;"></div>
-            <span class="verdict-badge verdict-mito">🚨 VEREDICTO: ¡ES UN MITO! (Apagar el fuego con gasolina)</span>
-            <p class="mito-explanation">
-              <strong>Lección histórica del colapso de Argentina (2001):</strong> Imponer austeridad y recortes masivos en plena depresión asfixia el consumo interno y destruye el tejido empresarial. En Argentina, obedecer las condicionalidades de recorte del FMI no solucionó la crisis; detonó un <strong>desempleo superior al 25%</strong> y hundió a más del <strong>50% de la población bajo la línea de pobreza</strong>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
     <!-- ==================== BLOQUE 2 ==================== -->
     <div class="section-marker" id="bloque-2">
       <div class="section-pill">
@@ -997,37 +915,6 @@
         <li><strong>El Estallido de 2001:</strong> La asfixia fiscal causó más del <strong>25% de desempleo</strong> y empujó a más del <strong>50% a la pobreza</strong>.</li>
       </ul>
     </article>
-
-    <!-- Quiz 2 -->
-    <div class="quiz-card" id="quiz-2">
-      <div class="quiz-header">
-        <span class="quiz-badge">Comprobación Interactiva</span>
-        <h3 class="quiz-title">Quiz de la Parte 2</h3>
-      </div>
-      <p class="quiz-question">
-        ¿Por qué Stiglitz califica como un "fracaso dogmático" la receta de talla única aplicada por el FMI en casos como Etiopía y Argentina?
-      </p>
-      <div class="quiz-options">
-        <div class="quiz-option" onclick="answerQuiz(2, this, false)">
-          <span class="option-letter">A</span>
-          <span>Porque los gobiernos locales carecían de recursos naturales para pagar sus deudas en divisas fuertes.</span>
-        </div>
-        <div class="quiz-option" onclick="answerQuiz(2, this, true)">
-          <span class="option-letter">B</span>
-          <span>Porque ignoró que las economías en desarrollo tienen mercados imperfectos, castigando a naciones con políticas sensatas (Etiopía) y asfixiando con austeridad en recesión (Argentina).</span>
-        </div>
-        <div class="quiz-option" onclick="answerQuiz(2, this, false)">
-          <span class="option-letter">C</span>
-          <span>Porque el FMI promovió un proteccionismo agrario excesivo en el Sur Global en contra de los acuerdos comerciales.</span>
-        </div>
-        <div class="quiz-option" onclick="answerQuiz(2, this, false)">
-          <span class="option-letter">D</span>
-          <span>Porque ambos países decidieron aislarse voluntariamente del comercio internacional y la inversión extranjera.</span>
-        </div>
-      </div>
-      <div class="quiz-feedback" id="feedback-2"></div>
-    </div>
-
 
     <!-- ==================== BLOQUE 3 ==================== -->
     <div class="section-marker" id="bloque-3">
@@ -1105,37 +992,6 @@
       </ul>
     </article>
 
-    <!-- Quiz 3 -->
-    <div class="quiz-card" id="quiz-3">
-      <div class="quiz-header">
-        <span class="quiz-badge">Comprobación Interactiva</span>
-        <h3 class="quiz-title">Quiz de la Parte 3</h3>
-      </div>
-      <p class="quiz-question">
-        Al comparar la transición económica hacia el mercado de Rusia y China, ¿cuál fue la lección determinante identificada por Joseph Stiglitz?
-      </p>
-      <div class="quiz-options">
-        <div class="quiz-option" onclick="answerQuiz(3, this, false)">
-          <span class="option-letter">A</span>
-          <span>La velocidad es el factor clave: desmantelar el Estado de la noche a la mañana garantiza competencia perfecta.</span>
-        </div>
-        <div class="quiz-option" onclick="answerQuiz(3, this, false)">
-          <span class="option-letter">B</span>
-          <span>Rusia triunfó al privatizar de golpe sin regulaciones, mientras que China sufrió por rechazar al FMI.</span>
-        </div>
-        <div class="quiz-option" onclick="answerQuiz(3, this, true)">
-          <span class="option-letter">C</span>
-          <span>La secuencia institucional es decisiva: privatizar sin leyes genera cleptocracia (Rusia), mientras que crear instituciones y redes previas (China) produjo una reducción histórica de la pobreza.</span>
-        </div>
-        <div class="quiz-option" onclick="answerQuiz(3, this, false)">
-          <span class="option-letter">D</span>
-          <span>Ambos modelos arrojaron resultados idénticos porque los mercados se autorregulan sin importar las leyes previas.</span>
-        </div>
-      </div>
-      <div class="quiz-feedback" id="feedback-3"></div>
-    </div>
-
-
     <!-- ==================== BLOQUE 4 ==================== -->
     <div class="section-marker" id="bloque-4">
       <div class="section-pill">
@@ -1212,34 +1068,86 @@
       </ul>
     </article>
 
-    <!-- Quiz 4 -->
-    <div class="quiz-card" id="quiz-4">
+    <!-- Dinámica de Cierre: Mito vs. Realidad (Fin de la Presentación) -->
+    <div class="quiz-card" id="dinamica-mitos-cierre">
       <div class="quiz-header">
-        <span class="quiz-badge">Comprobación Interactiva</span>
-        <h3 class="quiz-title">Quiz de la Parte 4</h3>
+        <span class="quiz-badge" style="background: rgba(212, 175, 55, 0.2); border-color: var(--gold-primary); color: var(--gold-bright);">⚡ Actividad de Cierre Interactiva • Salón Participativo</span>
+        <h3 class="quiz-title">Mito vs. Realidad: Desmontando el Dogma Neoliberal</h3>
       </div>
-      <p class="quiz-question">
-        Entre las propuestas de reforma estructural que plantea Stiglitz para una globalización con rostro humano, ¿cuál de las siguientes medidas es fundamental para democratizar el sistema financiero internacional?
+      <p class="quiz-question" style="margin-bottom: 0.75rem;">
+        Para concluir nuestra sustentación, pondremos a prueba la intuición del auditorio. A la cuenta de tres, voten con sus manos: <strong>👍 Pulgar arriba si creen que es Realidad</strong>, o <strong>👎 Pulgar abajo si creen que es Mito</strong>. ¡Luego descubriremos juntos el veredicto de Stiglitz!
       </p>
-      <div class="quiz-options">
-        <div class="quiz-option" onclick="answerQuiz(4, this, false)">
-          <span class="option-letter">A</span>
-          <span>Concentrar las decisiones exclusivamente en los ministerios de finanzas del G-7 para acelerar rescates.</span>
+
+      <div class="mito-container">
+        <!-- Mito 1 -->
+        <div class="mito-item" id="mito-item-1">
+          <div class="mito-top">
+            <span class="mito-tag">Premisa 1 de 3</span>
+            <span style="font-size: 0.85rem; color: var(--cyan-accent); font-weight: 600;">Eje: Comercio y Desigualdad</span>
+          </div>
+          <div class="mito-statement">
+            «El libre mercado y la apertura comercial desregulada generan un "derrame económico" que reduce la pobreza y beneficia a toda la población automáticamente.»
+          </div>
+          <div class="mito-actions">
+            <button class="btn-vote vote-realidad" onclick="revealMito(1, 'realidad')">👍 Realidad</button>
+            <button class="btn-vote vote-mito" onclick="revealMito(1, 'mito')">👎 Mito</button>
+            <button class="btn-vote" style="border-color: var(--cyan-accent); color: var(--cyan-accent);" onclick="revealMito(1, 'mito')">🔍 Revelar Veredicto</button>
+          </div>
+          <div class="mito-revelation" id="mito-rev-1">
+            <div id="mito-user-feedback-1" style="margin-bottom: 0.5rem; font-size: 0.95rem;"></div>
+            <span class="verdict-badge verdict-mito">🚨 VEREDICTO: ¡ES UN MITO! (La falacia del derrame)</span>
+            <p class="mito-explanation">
+              <strong>Evidencia empírica de Stiglitz, la CEPAL y la OMC:</strong> Aunque el comercio mundial creció <strong>más de 30 veces</strong>, las ganancias se hiperconcentraron. El <strong>1% más rico capta más del 20% de los ingresos mundiales</strong>, y en América Latina el 10% más rico gana <strong>22 veces más</strong> que el 20% más vulnerable. La copa creció en la cima, pero jamás goteó hacia la base trabajadora.
+            </p>
+          </div>
         </div>
-        <div class="quiz-option" onclick="answerQuiz(4, this, true)">
-          <span class="option-letter">B</span>
-          <span>Eliminar el derecho de veto unilateral de EE.UU., reasignar cuotas a los países en desarrollo y establecer un marco justo de alivio y bancarrota soberana.</span>
+
+        <!-- Mito 2 -->
+        <div class="mito-item" id="mito-item-2">
+          <div class="mito-top">
+            <span class="mito-tag">Premisa 2 de 3</span>
+            <span style="font-size: 0.85rem; color: var(--cyan-accent); font-weight: 600;">Eje: Las Instituciones Globales y la Talla Única</span>
+          </div>
+          <div class="mito-statement">
+            «El FMI y el Banco Mundial son organismos puramente técnicos y neutrales, cuyas recetas de austeridad y ajuste funcionan igual de bien en cualquier país del mundo.»
+          </div>
+          <div class="mito-actions">
+            <button class="btn-vote vote-realidad" onclick="revealMito(2, 'realidad')">👍 Realidad</button>
+            <button class="btn-vote vote-mito" onclick="revealMito(2, 'mito')">👎 Mito</button>
+            <button class="btn-vote" style="border-color: var(--cyan-accent); color: var(--cyan-accent);" onclick="revealMito(2, 'mito')">🔍 Revelar Veredicto</button>
+          </div>
+          <div class="mito-revelation" id="mito-rev-2">
+            <div id="mito-user-feedback-2" style="margin-bottom: 0.5rem; font-size: 0.95rem;"></div>
+            <span class="verdict-badge verdict-mito">🚨 VEREDICTO: ¡ES UN MITO! (Dogma y asfixia en recesión)</span>
+            <p class="mito-explanation">
+              <strong>Testimonio y evidencia directa de Joseph Stiglitz:</strong> Desde adentro del Banco Mundial, Stiglitz denuncia que el FMI actuó con fundamentalismo ideológico a puertas cerradas. Castigó a naciones con finanzas ordenadas (Etiopía) por no ceder a la banca extranjera, y asfixió a su "alumno modelo" (Argentina en 2001) forzando recortes de gasto en plena recesión que detonaron más del <strong>25% de desempleo</strong> y más del <strong>50% de pobreza</strong>.
+            </p>
+          </div>
         </div>
-        <div class="quiz-option" onclick="answerQuiz(4, this, false)">
-          <span class="option-letter">C</span>
-          <span>Aumentar el secretismo en las negociaciones para evitar que los parlamentos locales interfieran en los ajustes macroeconómicos.</span>
-        </div>
-        <div class="quiz-option" onclick="answerQuiz(4, this, false)">
-          <span class="option-letter">D</span>
-          <span>Prohibir que los países en desarrollo creen redes de seguridad social antes de abrir sus mercados financieros.</span>
+
+        <!-- Mito 3 -->
+        <div class="mito-item" id="mito-item-3">
+          <div class="mito-top">
+            <span class="mito-tag">Premisa 3 de 3</span>
+            <span style="font-size: 0.85rem; color: var(--cyan-accent); font-weight: 600;">Eje: Transición, Reglas y Mercado</span>
+          </div>
+          <div class="mito-statement">
+            «Para transitar a una economía próspera, lo más efectivo es desmantelar al Estado y privatizar todo "de la noche a la mañana", porque el mercado se autorregula solo sin necesidad de leyes previas.»
+          </div>
+          <div class="mito-actions">
+            <button class="btn-vote vote-realidad" onclick="revealMito(3, 'realidad')">👍 Realidad</button>
+            <button class="btn-vote vote-mito" onclick="revealMito(3, 'mito')">👎 Mito</button>
+            <button class="btn-vote" style="border-color: var(--cyan-accent); color: var(--cyan-accent);" onclick="revealMito(3, 'mito')">🔍 Revelar Veredicto</button>
+          </div>
+          <div class="mito-revelation" id="mito-rev-3">
+            <div id="mito-user-feedback-3" style="margin-bottom: 0.5rem; font-size: 0.95rem;"></div>
+            <span class="verdict-badge verdict-mito">🚨 VEREDICTO: ¡ES UN MITO! (Secuencia antes que mercado)</span>
+            <p class="mito-explanation">
+              <strong>Evidencia comparada de Rusia vs. China:</strong> Privatizar sin leyes antimonopolio ni tribunales causó en Rusia una caída del <strong>40% del PIB</strong> y el saqueo del país por oligarcas mafiosos. En cambio, China rechazó la Terapia de Choque del FMI, construyó instituciones y redes sociales primero, logrando sacar a más de <strong>500 millones de personas de la pobreza</strong>.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="quiz-feedback" id="feedback-4"></div>
     </div>
 
   </main>
@@ -1284,36 +1192,6 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeLightbox();
     });
-
-    // Quiz logic with instant feedback
-    const quizExplanations = {
-      1: "¡Correcto! Mientras la OMC constató una multiplicación por más de 30 del comercio global, Stiglitz y la CEPAL evidencian que los beneficios quedaron hiperconcentrados en las élites corporativas y el 1% más rico, profundizando la brecha social y salarial.",
-      2: "¡Correcto! La receta de talla única asume modelos teóricos de información y competencia perfecta que no existen en el mundo real. En Etiopía el FMI castigó un plan rural exitoso por razones ideológicas, y en Argentina forzó un recorte de gasto en plena recesión que detonó un 25% de desempleo.",
-      3: "¡Exacto! Stiglitz demuestra que los mercados requieren cimientos institucionales sólidos. La 'Terapia de Choque' en Rusia destruyó el 40% de su PIB y creó una cleptocracia mafiosa, mientras el gradualismo pragmático chino sacó a más de 500 millones de personas de la miseria.",
-      4: "¡Correcto! Stiglitz propone sustituir el monopolio tecnocrático del G-7 por una gobernanza transparente y multilateral donde las naciones del Sur Global tengan voz y voto vinculante, acompañada de un tribunal de bancarrota soberana que proteja las vidas y servicios esenciales de las poblaciones."
-    };
-
-    function answerQuiz(quizNum, optionElement, isCorrect) {
-      const quizCard = document.getElementById('quiz-' + quizNum);
-      const options = quizCard.querySelectorAll('.quiz-option');
-      const feedback = document.getElementById('feedback-' + quizNum);
-
-      options.forEach(opt => {
-        opt.style.pointerEvents = 'none';
-        opt.classList.remove('correct', 'incorrect');
-      });
-
-      if (isCorrect) {
-        optionElement.classList.add('correct');
-        feedback.className = 'quiz-feedback success';
-        feedback.innerHTML = '<strong>✓ ¡Respuesta Correcta!</strong><br>' + quizExplanations[quizNum];
-      } else {
-        optionElement.classList.add('incorrect');
-        feedback.className = 'quiz-feedback error';
-        feedback.innerHTML = '<strong>✗ Respuesta Incorrecta.</strong><br>' + quizExplanations[quizNum];
-      }
-      feedback.style.display = 'block';
-    }
 
     // Mito vs Realidad logic
     function revealMito(mitoNum, userChoice) {
