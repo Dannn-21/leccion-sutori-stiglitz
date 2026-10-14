@@ -505,6 +505,134 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Mito vs Realidad Card Styles */
+    .mito-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .mito-item {
+      background: rgba(11, 19, 37, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .mito-item:hover {
+      border-color: var(--gold-primary);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .mito-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .mito-tag {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold-bright);
+      border: 1px solid var(--gold-primary);
+      padding: 0.2rem 0.65rem;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mito-statement {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--cream-text);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .mito-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-vote {
+      background: rgba(16, 27, 51, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--cream-text);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: inherit;
+    }
+
+    .btn-vote:hover {
+      transform: translateY(-2px);
+      border-color: var(--cyan-accent);
+      color: var(--cyan-accent);
+    }
+
+    .btn-vote.vote-mito:hover {
+      border-color: #EF4444;
+      color: #FCA5A5;
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    .btn-vote.vote-realidad:hover {
+      border-color: #10B981;
+      color: #6EE7B7;
+      background: rgba(16, 185, 129, 0.15);
+    }
+
+    .mito-revelation {
+      display: none;
+      margin-top: 1.25rem;
+      padding: 1.25rem;
+      border-radius: 8px;
+      background: rgba(6, 11, 20, 0.85);
+      border-left: 4px solid var(--cyan-accent);
+      animation: fadeIn 0.35s ease-in-out;
+    }
+
+    .verdict-badge {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .verdict-mito {
+      background: rgba(239, 68, 68, 0.2);
+      color: #F87171;
+      border: 1px solid #EF4444;
+    }
+
+    .mito-explanation {
+      color: var(--cream-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .mito-explanation strong {
+      color: var(--gold-bright);
+    }
+
     /* Lightbox Modal */
     .lightbox-modal {
       display: none;
@@ -607,6 +735,7 @@
       <a href="#bloque-2" class="nav-btn">Parte 2: Dogma y Poder</a>
       <a href="#bloque-3" class="nav-btn">Parte 3: Crisis y Transición</a>
       <a href="#bloque-4" class="nav-btn">Parte 4: Reforma y Futuro</a>
+      <a href="Guia_Exposicion_Sutori_Stiglitz.pdf" class="nav-btn" style="border-color: #00E5FF; color: #00E5FF;" download>📥 Descargar Guía PDF</a>
     </div>
   </nav>
 
@@ -710,34 +839,86 @@
       </ul>
     </article>
 
-    <!-- Quiz 1 -->
-    <div class="quiz-card" id="quiz-1">
+    <!-- Dinámica Interactiva: Mito vs. Realidad (Parte 1) -->
+    <div class="quiz-card" id="dinamica-mitos-1">
       <div class="quiz-header">
-        <span class="quiz-badge">Comprobación Interactiva</span>
-        <h3 class="quiz-title">Quiz de la Parte 1</h3>
+        <span class="quiz-badge" style="background: rgba(212, 175, 55, 0.2); border-color: var(--gold-primary); color: var(--gold-bright);">⚡ Dinámica Interactiva • Salón Participativo</span>
+        <h3 class="quiz-title">Mito vs. Realidad: Desmontando el Dogma Neoliberal</h3>
       </div>
-      <p class="quiz-question">
-        Según Joseph E. Stiglitz y los datos empíricos de organismos internacionales, ¿cuál ha sido uno de los efectos más contradictorios de la globalización bajo el Consenso de Washington?
+      <p class="quiz-question" style="margin-bottom: 0.75rem;">
+        ¡Hora de participar! A la cuenta de tres, voten con sus manos: <strong>👍 Pulgar arriba si creen que es Realidad</strong>, o <strong>👎 Pulgar abajo si creen que es Mito</strong>. Luego descubriremos el veredicto de Stiglitz:
       </p>
-      <div class="quiz-options">
-        <div class="quiz-option" onclick="answerQuiz(1, this, false)">
-          <span class="option-letter">A</span>
-          <span>La reducción homogénea de las brechas de riqueza en todos los continentes gracias a la desregulación total.</span>
+
+      <div class="mito-container">
+        <!-- Mito 1 -->
+        <div class="mito-item" id="mito-item-1">
+          <div class="mito-top">
+            <span class="mito-tag">Premisa 1 de 3</span>
+            <span style="font-size: 0.85rem; color: var(--cyan-accent); font-weight: 600;">Eje: Comercio y Desigualdad</span>
+          </div>
+          <div class="mito-statement">
+            «El libre mercado y la apertura comercial desregulada generan un "derrame económico" que reduce la pobreza y beneficia a toda la población automáticamente.»
+          </div>
+          <div class="mito-actions">
+            <button class="btn-vote vote-realidad" onclick="revealMito(1, 'realidad')">👍 Realidad</button>
+            <button class="btn-vote vote-mito" onclick="revealMito(1, 'mito')">👎 Mito</button>
+            <button class="btn-vote" style="border-color: var(--cyan-accent); color: var(--cyan-accent);" onclick="revealMito(1, 'mito')">🔍 Revelar Veredicto</button>
+          </div>
+          <div class="mito-revelation" id="mito-rev-1">
+            <div id="mito-user-feedback-1" style="margin-bottom: 0.5rem; font-size: 0.95rem;"></div>
+            <span class="verdict-badge verdict-mito">🚨 VEREDICTO: ¡ES UN MITO! (La falacia del derrame)</span>
+            <p class="mito-explanation">
+              <strong>Evidencia empírica de Stiglitz, la CEPAL y la OMC:</strong> Aunque el comercio mundial creció <strong>más de 30 veces</strong>, las ganancias se hiperconcentraron. El <strong>1% más rico capta más del 20% de los ingresos mundiales</strong>, y en América Latina el 10% más rico gana <strong>22 veces más</strong> que el 20% más vulnerable. La copa creció en la cima, pero jamás goteó hacia la base trabajadora.
+            </p>
+          </div>
         </div>
-        <div class="quiz-option" onclick="answerQuiz(1, this, true)">
-          <span class="option-letter">B</span>
-          <span>El crecimiento récord del comercio internacional contrastado con una concentración extrema donde el 1% más rico capta más del 20% de los ingresos mundiales.</span>
+
+        <!-- Mito 2 -->
+        <div class="mito-item" id="mito-item-2">
+          <div class="mito-top">
+            <span class="mito-tag">Premisa 2 de 3</span>
+            <span style="font-size: 0.85rem; color: var(--cyan-accent); font-weight: 600;">Eje: Las Instituciones Globales</span>
+          </div>
+          <div class="mito-statement">
+            «El FMI y el Banco Mundial son organismos puramente técnicos y neutrales, dedicados a salvar a las economías sin agendas políticas ni intereses corporativos.»
+          </div>
+          <div class="mito-actions">
+            <button class="btn-vote vote-realidad" onclick="revealMito(2, 'realidad')">👍 Realidad</button>
+            <button class="btn-vote vote-mito" onclick="revealMito(2, 'mito')">👎 Mito</button>
+            <button class="btn-vote" style="border-color: var(--cyan-accent); color: var(--cyan-accent);" onclick="revealMito(2, 'mito')">🔍 Revelar Veredicto</button>
+          </div>
+          <div class="mito-revelation" id="mito-rev-2">
+            <div id="mito-user-feedback-2" style="margin-bottom: 0.5rem; font-size: 0.95rem;"></div>
+            <span class="verdict-badge verdict-mito">🚨 VEREDICTO: ¡ES UN MITO! (Captura corporativa)</span>
+            <p class="mito-explanation">
+              <strong>Testimonio directo de Joseph Stiglitz (Ex Economista Jefe del Banco Mundial):</strong> Las decisiones se toman a puerta cerrada bajo un <strong>fundamentalismo ideológico de mercado</strong>. En lugar de actuar como árbitros neutrales, las políticas del FMI y el Tesoro estadounidense priorizaron rescatar a los grandes acreedores y bancos de Wall Street, transfiriendo el costo de las pérdidas a los hombros de las poblaciones empobrecidas.
+            </p>
+          </div>
         </div>
-        <div class="quiz-option" onclick="answerQuiz(1, this, false)">
-          <span class="option-letter">C</span>
-          <span>La eliminación de monopolios privados y la rápida expansión de las reservas fiscales en América Latina.</span>
-        </div>
-        <div class="quiz-option" onclick="answerQuiz(1, this, false)">
-          <span class="option-letter">D</span>
-          <span>El fin de los ciclos recesivos en economías emergentes debido a la austeridad fiscal obligatoria.</span>
+
+        <!-- Mito 3 -->
+        <div class="mito-item" id="mito-item-3">
+          <div class="mito-top">
+            <span class="mito-tag">Premisa 3 de 3</span>
+            <span style="font-size: 0.85rem; color: var(--cyan-accent); font-weight: 600;">Eje: El Consenso de Washington</span>
+          </div>
+          <div class="mito-statement">
+            «Cuando una nación entra en recesión, la fórmula más responsable y efectiva es la austeridad inmediata: recortar de inmediato el presupuesto en salud, educación y subsidios.»
+          </div>
+          <div class="mito-actions">
+            <button class="btn-vote vote-realidad" onclick="revealMito(3, 'realidad')">👍 Realidad</button>
+            <button class="btn-vote vote-mito" onclick="revealMito(3, 'mito')">👎 Mito</button>
+            <button class="btn-vote" style="border-color: var(--cyan-accent); color: var(--cyan-accent);" onclick="revealMito(3, 'mito')">🔍 Revelar Veredicto</button>
+          </div>
+          <div class="mito-revelation" id="mito-rev-3">
+            <div id="mito-user-feedback-3" style="margin-bottom: 0.5rem; font-size: 0.95rem;"></div>
+            <span class="verdict-badge verdict-mito">🚨 VEREDICTO: ¡ES UN MITO! (Apagar el fuego con gasolina)</span>
+            <p class="mito-explanation">
+              <strong>Lección histórica del colapso de Argentina (2001):</strong> Imponer austeridad y recortes masivos en plena depresión asfixia el consumo interno y destruye el tejido empresarial. En Argentina, obedecer las condicionalidades de recorte del FMI no solucionó la crisis; detonó un <strong>desempleo superior al 25%</strong> y hundió a más del <strong>50% de la población bajo la línea de pobreza</strong>.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="quiz-feedback" id="feedback-1"></div>
     </div>
 
 
@@ -1132,6 +1313,27 @@
         feedback.innerHTML = '<strong>✗ Respuesta Incorrecta.</strong><br>' + quizExplanations[quizNum];
       }
       feedback.style.display = 'block';
+    }
+
+    // Mito vs Realidad logic
+    function revealMito(mitoNum, userChoice) {
+      const revelation = document.getElementById('mito-rev-' + mitoNum);
+      const item = document.getElementById('mito-item-' + mitoNum);
+      const buttons = item.querySelectorAll('.btn-vote');
+      const feedbackText = document.getElementById('mito-user-feedback-' + mitoNum);
+
+      buttons.forEach(btn => {
+        btn.style.pointerEvents = 'none';
+        btn.style.opacity = '0.5';
+      });
+
+      if (userChoice === 'mito') {
+        feedbackText.innerHTML = '<span style="color: #10B981; font-weight: 700;">✓ ¡Excelente intuición del salón! Efectivamente es un MITO.</span>';
+      } else {
+        feedbackText.innerHTML = '<span style="color: #F87171; font-weight: 700;">✗ ¡Esa fue la promesa oficial vendida, pero los hechos demuestran que es un MITO!</span>';
+      }
+
+      revelation.style.display = 'block';
     }
   </script>
 </body>
